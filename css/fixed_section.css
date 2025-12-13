@@ -1,0 +1,151 @@
+/* --- Positioning and Size --- */
+.fixed-cta-section {
+    position: fixed;
+    bottom: 5%;
+    right: 48px; /* right-12 */
+    z-index: 50;
+}
+
+.cta-button-container {
+    /* max-width and max-height for the containing div */
+    max-width: 141px; 
+    max-height: 124px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-button {
+    position: relative;
+    /* This button contains the SVG icon (80x80) and the ping effect */
+    background: none;
+    border: none;
+    padding: 0;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    z-index: 10; /* Keep the button content (SVG) above the ping effect */
+}
+
+/* The fixed-top-right element (from original code) */
+.fixed-top-right {
+    position: fixed;
+    top: 10%;
+    right: 0;
+    z-index: 50;
+}
+@media (min-width: 640px) {
+    .fixed-top-right {
+        top: 15%; /* sm:top-[15%] */
+    }
+}
+
+/* --- Ping Animation Effect --- */
+.fixed-stats-panel {
+    position: fixed;
+    top: 10%; /* Initial top position */
+    right: 0;
+    z-index: 40; /* Lower z-index than the CTA button (z-index: 50) */
+    
+    /* Transition for smooth appearance/disappearance */
+    transition: transform 0.3s ease-in-out; 
+    
+    /* Initial state: Slide off the screen to the right */
+    transform: translateX(100%); 
+}
+
+/* Class to make the panel appear (toggled by JavaScript) */
+.fixed-stats-panel.active {
+    transform: translateX(0); /* Slide into view */
+}
+
+/* Class to hide the panel completely when initially loading */
+.fixed-stats-panel.hidden {
+    display: none; /* Only use 'hidden' on initial load to prevent FOUC, otherwise use .active */
+}
+
+
+@media (min-width: 640px) {
+    .fixed-stats-panel {
+        top: 15%; 
+    }
+}
+/* The element creating the expanding circle */
+.ping-effect {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -10; /* Place it behind the button's SVG icon */
+    border-radius: 50%;
+    background-color: #FFCD28; /* bg-[#FFCD28] */
+    
+    /* Apply the animation */
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite; /* Replicate Tailwind's default 'ping' */
+}
+
+/* Keyframes for the "ping" effect (expands and fades out) */
+@keyframes ping {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+
+
+.fixed-top-right {
+    position: fixed;
+    top: 10%;
+    right: 0;
+    z-index: 50;
+}
+
+@media (min-width: 640px) {
+    .fixed-top-right {
+        top: 15%;
+    }
+}
+
+.stats-panel {
+    position: relative;
+    background: #F2F2F2;
+    /* Use max-width for internal scaling, but the outer wrapper controls position */
+    max-width: 458px; 
+    width: 458px; /* Force a width for the drawer effect */
+    padding: 4rem 2rem 8rem 2rem; 
+    border-radius: 24px 0 0 24px;
+}
+
+.stats-title {
+    font-weight: 600;
+    font-size: 2rem; /* text-4xl approx */
+    margin-bottom: 3rem;
+}
+
+.stats-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.stats-icon {
+    margin-right: 2rem;
+}
+
+.stats-number {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.stats-label {
+    font-size: 1.1rem;
+    color: #828282;
+    margin: 0;
+}
