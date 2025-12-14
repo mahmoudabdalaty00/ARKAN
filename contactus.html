@@ -48,7 +48,7 @@
                 <li class="nav-item"><a class="nav-link" href="index.html">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="index.html">News</a></li>
                 <li class="nav-item"><a class="nav-link" href="index.html">Careers</a></li>
-                <li class="nav-item"><a class="nav-link active" href="contactus.html">Contact</a></li>
+              
                  
                  <li class="nav-item ms-lg-3">                 
                           <a class="language-switcher" href="contactus.Ar.html">Ar</a>
@@ -105,7 +105,10 @@
 
                     <div class="contact-info-block">
                         <div class="contact-info-title">Email</div>
-                        <div class="contact-info-value">support@yourloan.ae</div>
+                     <div class="contact-info-value">
+                        <a href="mailto:arkan0vip@gmail.com">arkan0vip@gmail.com</a>
+                        </div>
+
                     </div>
 
                     <div class="contact-info-block">
@@ -212,6 +215,42 @@
   }, { threshold: 0.15 });
 
   els.forEach(el => io.observe(el));
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const nav = document.querySelector(".navbar");
+  const mq = window.matchMedia("(max-width: 750px)");
+  if (!nav) return;
+
+  let lastY = window.scrollY;
+
+  const onScroll = () => {
+    if (!mq.matches) {
+      nav.classList.remove("nav-hidden");
+      lastY = window.scrollY;
+      return;
+    }
+
+    const y = window.scrollY;
+
+    if (y <= 5) {
+      nav.classList.remove("nav-hidden");
+      lastY = y;
+      return;
+    }
+
+    if (y > lastY) nav.classList.add("nav-hidden");   // scrolling down -> hide
+    else nav.classList.remove("nav-hidden");          // scrolling up -> show
+
+    lastY = y;
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+});
+
+
 </script>
 
 </body>

@@ -280,3 +280,33 @@
     height: 320px;
   }
 }
+
+/* Mobile hide-on-scroll navbar */
+@media (max-width: 750px) {
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    transition: transform .25s ease;
+    background: #fff;
+    will-change: transform;
+  }
+
+  .navbar.nav-hidden {
+    transform: translateY(-110%);
+  }
+
+
+ 
+  .arabic-mobile-right {
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* optional: make paragraph spacing nicer on mobile */
+  .arabic-mobile-right .contact-hero-text {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+}
