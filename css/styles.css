@@ -278,7 +278,8 @@ h1,h2,h3,p{ margin:0; }
    HERO TOP (your existing)
 ------------------------- */
 .hero-top{
-  padding:90px 0 70px;
+  padding:0;
+  margin:0;
   background:linear-gradient(135deg,#ffffff 0%, #f8f9fa 100%);
   width:100%;
 }
@@ -298,11 +299,11 @@ h1,h2,h3,p{ margin:0; }
   color:var(--accent);
   font-weight:800;
   font-size:.85rem;
-  margin-bottom:1rem;
+  margin-bottom:.5rem;
   display:inline-block;
-  padding:.5rem 1rem;
+  padding:.5rem .5rem;
   background:rgba(242,169,0,.1);
-  border-radius:999px;
+  border-radius:10px;
 }
 
 .hero-title{
@@ -322,7 +323,7 @@ h1,h2,h3,p{ margin:0; }
   font-size:clamp(.95rem, 1.1vw, 1.1rem);
   color:var(--text-light);
   line-height:1.85;
-  max-width:780px;
+  max-width:900px;
   margin:0 auto;
 }
 
@@ -334,6 +335,7 @@ h1,h2,h3,p{ margin:0; }
   display:flex;
   justify-content:center;
   animation:slideInRight .8s ease-out;
+  margin:0;
 }
 
 .hero-media-inner{
@@ -341,14 +343,15 @@ h1,h2,h3,p{ margin:0; }
   max-width:1100px;
   background:linear-gradient(135deg,#f5f0ff 0%, #fffaf0 100%);
   border-radius:32px;
-  padding:18px;
-  box-shadow:0 20px 50px rgba(0,0,0,.08);
+  padding:5px;
+  box-shadow:0 5px 12px rgba(0,0,0,.08);
   position:relative;
   border:1px solid rgba(242,169,0,.10);
+  margin: 0;
 }
 
 @media (min-width:768px){
-  .hero-media-inner{ padding:24px; }
+  .hero-media-inner{ padding:5px; }
 }
 
 .hero-slider-only{ display:block; }
@@ -368,21 +371,25 @@ h1,h2,h3,p{ margin:0; }
   overflow:hidden;
   border-radius:28px;
   background:#000;
-  box-shadow:0 30px 60px rgba(0,0,0,.30);
+  box-shadow:0 15px 30px rgba(0,0,0,.30);
 }
 
 @media (max-width:480px){
   .hero-slider-container{
-    max-width:280px;
+    max-width:auto;
     border-radius:22px;
   }
 }
 
+.col-12 {
+  padding: 0 12px;
+}
 .hero-slider{
   display:flex;
   width:100%;
   height:100%;
   transition:transform .6s cubic-bezier(.4,0,.2,1);
+  padding: 0;
 }
 
 .hero-slide{
@@ -511,13 +518,18 @@ h1,h2,h3,p{ margin:0; }
   }
 }
 @media (max-width: 768px){
-  /* .hero-content{ padding: 0 10px; } */
+   .hero-content{ 
+    padding: 0 ;
+    margin:0 ;
+   }  
   .hero-title, .hero-eyebrow{ text-align: start; }
   .hero-text{
     text-align: left;
+    margin: 0;
+    padding: 0;
     max-width: 100% !important;
     margin: 0 !important;
-    font-size: 16px;
+    font-size: bold 16px;
     line-height: 1.85;
     text-wrap: pretty;
     hyphens: auto;
@@ -530,6 +542,7 @@ h1,h2,h3,p{ margin:0; }
     line-height: 1.85;
     text-wrap: pretty;
     hyphens: auto;
+    padding: 0;
   }
 }
 @media (max-width: 1024px){
