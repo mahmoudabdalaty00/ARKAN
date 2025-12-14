@@ -24,15 +24,16 @@
   --hero-card-shadow:0 20px 50px rgba(0,0,0,.08);
   --hero-slider-shadow:0 30px 60px rgba(0,0,0,.30);
 }
-
+ 
 *{ box-sizing:border-box; }
-html{ -webkit-text-size-adjust:100%; }
+html{ -webkit-text-size-adjust:100%;height:100%; }
 body{
   margin:0;
   padding:0;
   font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   color:var(--text);
   background:#fff;
+  overflow:scroll;
 }
 
 img{ max-width:100%; display:block; }
@@ -313,6 +314,10 @@ h1,h2,h3,p{ margin:0; }
   letter-spacing:-.02em;
 }
 
+.hero-title-ar{
+  direction: rtl;
+}
+
 .hero-text{
   font-size:clamp(.95rem, 1.1vw, 1.1rem);
   color:var(--text-light);
@@ -525,5 +530,21 @@ h1,h2,h3,p{ margin:0; }
     line-height: 1.85;
     text-wrap: pretty;
     hyphens: auto;
+  }
+}
+@media (max-width: 1024px){
+  nav.navbar{ cursor: pointer; }
+}
+
+/* Mobile: when menu opens, give it a solid background + spacing */
+@media (max-width: 991px){
+  nav.navbar{
+    background: #fff;           /* important */
+  }
+
+  /* the opened collapse area */
+  #mainNav{
+    background: #fff;
+    padding: 12px 0;
   }
 }

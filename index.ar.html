@@ -61,11 +61,11 @@
     <div class="row g-5 hero-top-row" style="margin: 0 auto; max-width: 1200px; padding: 0 20px;">
 
       <!-- TEXT (top) -->
-      <div class="col-12">
-        <div class="hero-content">
-          <p class="hero-eyebrow">مزوّد مرخّص لخدمات التمويل النانوي</p>
+      <div class="col-12 .hero-title-ar" dir="rtl">
+        <div class="hero-content .hero-title-ar" dir="rtl">
+          <p class="hero-eyebrow .hero-title-ar" dir="rtl">مزوّد مرخّص لخدمات التمويل النانوي</p>
 
-          <h1 class="hero-title">
+          <h1 class="hero-title .hero-title-ar" dir="rtl">
             نمنحك الوصول إلى<br>
             فرص التمويل الرقمية
           </h1>
@@ -544,6 +544,42 @@
 
 <script src="js/script.js"></script>
 <script src="js/howitworks.js"></script>
+<script>
+  (function () {
+    // make browser not “restore” old scroll position
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
+    function goTop() {
+      // force immediate + smooth (some browsers ignore smooth sometimes)
+      window.scrollTo(0, 0);
+      requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
+    }
+
+    const brand = document.querySelector(".brand-wrap");
+    const collapseEl = document.getElementById("mainNav");
+
+    if (!brand) return;
+
+    function onBrand(e) {
+      // stop link navigation (otherwise it may reload and keep scroll)
+      e.preventDefault();
+      e.stopPropagation();
+
+      goTop();
+
+      // close menu if open (mobile)
+      if (collapseEl && collapseEl.classList.contains("show") && window.innerWidth < 992) {
+        bootstrap.Collapse.getOrCreateInstance(collapseEl).hide();
+      }
+    }
+
+    // Mobile browsers: touch fires earlier than click (more reliable)
+    brand.addEventListener("touchstart", onBrand, { passive: false });
+    brand.addEventListener("click", onBrand);
+  })();
+</script>
+
+
 
 </body>
 </html>
