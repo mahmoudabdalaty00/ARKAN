@@ -284,12 +284,12 @@ h1,h2,h3,p{ margin:0; }
 }
 
 .hero-content{
-  text-align:center;
+  text-align:start;
   animation:slideInLeft .8s ease-out;
 }
 
 @media (min-width:992px){
-  .hero-content{ text-align:left; }
+  .hero-content{ text-align:start; }
 }
 
 .hero-eyebrow{
@@ -511,8 +511,8 @@ h1,h2,h3,p{ margin:0; }
   }
 }
 @media (max-width: 768px){
-  .hero-content{ padding: 0 10px; }
-  .hero-title, .hero-eyebrow{ text-align: center; }
+  /* .hero-content{ padding: 0 10px; } */
+  .hero-title, .hero-eyebrow{ text-align: start; }
   .hero-text{
     text-align: left;
     max-width: 100% !important;
