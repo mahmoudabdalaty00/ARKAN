@@ -1,9 +1,5 @@
 /* =========================================================
    YOURLOAN / ARKAN – FULL CSS (PASTE DIRECTLY)
-   - Mobile-first
-   - Fixes Bootstrap conflict (NO grid !important on .row)
-   - Hides the green mobile language icon
-   - Includes: Header/Nav/Brand + Hero Top + Slider + Buttons
 ========================================================= */
 
 /* -------------------------
@@ -44,13 +40,12 @@ a{ color:inherit; text-decoration:none; }
 ul{ list-style:none; padding:0; margin:0; }
 h1,h2,h3,p{ margin:0; }
 
-/* Accessibility */
 @media (prefers-reduced-motion: reduce){
   *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
 }
 
 /* -------------------------
-   Header / Nav
+   Header / Nav (your existing styles)
 ------------------------- */
 .header{
   padding:24px 0;
@@ -73,7 +68,6 @@ h1,h2,h3,p{ margin:0; }
   .header-content{ flex-wrap:nowrap; }
 }
 
-/* Brand */
 .brand-wrap{
   display:flex;
   align-items:center;
@@ -113,7 +107,6 @@ h1,h2,h3,p{ margin:0; }
   transform:rotate(-3deg) scale(1.06);
 }
 
-/* Mobile controls */
 .mobile-controls{
   display:inline-flex;
   align-items:center;
@@ -124,7 +117,6 @@ h1,h2,h3,p{ margin:0; }
   .mobile-controls{ display:none; }
 }
 
-/* Hamburger */
 #hamburger-button{
   appearance:none;
   background:transparent;
@@ -155,13 +147,9 @@ h1,h2,h3,p{ margin:0; }
 .hamburger-line.middle{ top:20px; }
 .hamburger-line.bottom{ top:28px; }
 
-/* Hide the green language icon on mobile */
 .lang-switch-mobile{ display:none !important; }
-
-/* Mobile menu visibility helper */
 .hidden-mobile{ display:none !important; }
 
-/* Nav */
 .nav-menu{
   width:100%;
   margin-top:8px;
@@ -173,7 +161,6 @@ h1,h2,h3,p{ margin:0; }
     margin-top:0;
     display:block;
   }
-  /* If nav has hidden-mobile class, still show it on desktop */
   .nav-menu.hidden-mobile{ display:block !important; }
 }
 
@@ -242,7 +229,6 @@ h1,h2,h3,p{ margin:0; }
   font-weight:900;
 }
 
-/* Desktop language button (Ar) */
 .language-switcher{
   padding:10px 18px;
   border:2px solid var(--accent);
@@ -271,7 +257,6 @@ h1,h2,h3,p{ margin:0; }
 
 .language-switcher:active{ transform:translateY(0); }
 
-/* Optional: in case you use navbar-brand/logo elsewhere */
 .navbar-brand{ padding-top:0; padding-bottom:0; }
 
 .navbar-logo{
@@ -281,31 +266,29 @@ h1,h2,h3,p{ margin:0; }
   display:block;
   object-fit:contain;
 }
+
 @media (max-width: 991px){
   .fixed-cta-section{
     display: none !important;
   }
 }
+
 /* -------------------------
-   HERO TOP (Your pasted section)
+   HERO TOP (your existing)
 ------------------------- */
-/* HERO WRAPPER */
 .hero-top{
   padding:90px 0 70px;
   background:linear-gradient(135deg,#ffffff 0%, #f8f9fa 100%);
   width:100%;
 }
 
-/* TEXT */
 .hero-content{
   text-align:center;
   animation:slideInLeft .8s ease-out;
 }
 
 @media (min-width:992px){
-  .hero-content{
-    text-align:left; /* desktop: NOT centered */
-  }
+  .hero-content{ text-align:left; }
 }
 
 .hero-eyebrow{
@@ -339,12 +322,9 @@ h1,h2,h3,p{ margin:0; }
 }
 
 @media (min-width:992px){
-  .hero-text{
-    margin:0; /* desktop: align with left content */
-  }
+  .hero-text{ margin:0; }
 }
 
-/* MEDIA CARD */
 .hero-media-card{
   display:flex;
   justify-content:center;
@@ -366,15 +346,12 @@ h1,h2,h3,p{ margin:0; }
   .hero-media-inner{ padding:24px; }
 }
 
-/* =========================
-   MOBILE SLIDER (ONLY)
-========================= */
 .hero-slider-only{ display:block; }
 .hero-gallery-only{ display:none; }
 
 @media (min-width:992px){
-  .hero-slider-only{ display:none; }     /* desktop hides slider */
-  .hero-gallery-only{ display:grid; }   /* desktop shows 3 images */
+  .hero-slider-only{ display:none; }
+  .hero-gallery-only{ display:grid; }
 }
 
 .hero-slider-container{
@@ -410,7 +387,6 @@ h1,h2,h3,p{ margin:0; }
   display:block;
 }
 
-/* arrows */
 .hero-prev,.hero-next{
   position:absolute;
   bottom:14px;
@@ -440,7 +416,6 @@ h1,h2,h3,p{ margin:0; }
 .hero-prev{ left:14px; }
 .hero-next{ right:14px; }
 
-/* dots */
 .hero-dots{
   position:absolute;
   bottom:16px;
@@ -466,11 +441,7 @@ h1,h2,h3,p{ margin:0; }
   width:28px;
   border-radius:8px;
 }
-/* Hide stats drawer on small screens */
 
-/* =========================
-   DESKTOP 3-IMAGE GRID
-========================= */
 .hero-gallery{
   width:100%;
   grid-template-columns:repeat(3, 1fr);
@@ -497,7 +468,6 @@ h1,h2,h3,p{ margin:0; }
   transform:scale(1.04);
 }
 
-/* reveal animation for the 3 images */
 .reveal-card{
   opacity:0;
   transform:translateY(18px);
@@ -509,12 +479,10 @@ h1,h2,h3,p{ margin:0; }
   transform:translateY(0);
 }
 
-/* stagger */
 .hero-gallery-card:nth-child(1){ transition-delay:120ms; }
 .hero-gallery-card:nth-child(2){ transition-delay:220ms; }
 .hero-gallery-card:nth-child(3){ transition-delay:320ms; }
 
-/* animations */
 @keyframes slideInLeft{
   from{ opacity:0; transform:translateX(-30px); }
   to{ opacity:1; transform:translateX(0); }
@@ -523,4 +491,39 @@ h1,h2,h3,p{ margin:0; }
   from{ opacity:0; transform:translateX(30px); }
   to{ opacity:1; transform:translateX(0); }
 }
- 
+
+/* =========================================================
+   ✅ FIX: Hide Bootstrap NAVBAR on scroll (mobile <= 750px)
+   Target your actual element: <nav class="navbar ... sticky-top">
+========================================================= */
+@media (max-width: 750px){
+  nav.navbar{
+    transition: transform .25s ease;
+    will-change: transform;
+  }
+  nav.navbar.is-hidden{
+    transform: translateY(-110%);
+  }
+}
+@media (max-width: 768px){
+  .hero-content{ padding: 0 10px; }
+  .hero-title, .hero-eyebrow{ text-align: center; }
+  .hero-text{
+    text-align: left;
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-size: 16px;
+    line-height: 1.85;
+    text-wrap: pretty;
+    hyphens: auto;
+  }
+  .hero-text2{
+    text-align: right;
+    max-width: 100% !important;
+    margin: 0 !important;
+    font-size: 16px;
+    line-height: 1.85;
+    text-wrap: pretty;
+    hyphens: auto;
+  }
+}
