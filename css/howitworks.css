@@ -1,294 +1,212 @@
-/* --- HOW IT WORKS SECTION --- */
-.how-section {
-    position: relative;
-    padding: 80px 0;
-    overflow: hidden;
-    background-color:#faf3de; /* Light background for the section */
+.how-section{
+  position: relative;
+  padding: 80px 0;
+  overflow: hidden;
+  background: #faf3de;
 }
 
-/* Main Container: Mimics the original layout structure */
-.how-section .container {
- 
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    max-width: 1200px; /* Adjust as needed */
-    margin: 0 auto;
-    padding: 0 15px;
+.how-section .container{
+  display:flex;
+  flex-direction:column;
+  gap:40px;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 15px;
 }
 
-@media (min-width: 992px) {
-    .how-section .container {
-        flex-direction: row;
-        align-items: flex-end; /* Align the bottom of the two columns */
-        padding: 0 30px;
-    }
+@media (min-width:992px){
+  .how-section .container{
+    flex-direction:row;
+    align-items:flex-end;
+    padding:0 30px;
+  }
 }
 
-
-/* --- LEFT SIDE: Content and Cards --- */
-.content-wrapper {
-    flex: 1.5; /* Takes more space on large screens */
-    padding-top: 40px;
+.content-wrapper{
+  flex:1.5;
+  padding-top:40px;
 }
 
-.header-section {
-    margin-bottom: 3.5rem; /* 14 * 0.25rem = 3.5rem */
-    word-break: break-word;
+.header-section{ margin-bottom:3.5rem; }
+
+.header-section .label{
+  font-weight:700;
+  font-size:1.25rem;
+  text-transform:uppercase;
 }
 
-.header-section .label {
-    font-weight: 700;
-    font-size: 1.25rem; /* text-xl */
-    color: var(--bs-primary, #007bff); /* Use a primary color or define a custom one */
-    text-transform: uppercase;
-    width: 100%;
+.header-section .title{
+  font-weight:600;
+  font-size:2.25rem;
+  line-height:1.2;
+  margin:1rem 0;
+}
+@media (min-width:768px){
+  .header-section .title{ font-size:3rem; }
+}
+.header-section .subtitle{
+  color:#4a5568;
+  font-size:1.125rem;
 }
 
-.header-section .title {
-    font-weight: 600;
-    font-size: 2.25rem; /* text-4xl */
-    line-height: 1.2;
-    margin: 1rem 0;
+/* Cards grid (DIV based) */
+.cards-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1rem .5rem;
 }
 
-@media (min-width: 768px) {
-    .header-section .title {
-        font-size: 3rem; /* md:text-5xl */
-    }
+@media (min-width:768px){
+  .cards-grid{ grid-template-columns:repeat(2, 1fr); }
 }
 
-.header-section .subtitle {
-    color: #4a5568; /* text-text / dark grey */
-    font-size: 1.125rem; /* text-lg */
-    max-width: fit-content;
-    word-break: break-word;
+/* Card base */
+.card{
+  position:relative;
+  overflow:visible;
 }
 
-/* Cards Grid */
-.cards-wrapper {
-    padding-bottom: 2.5rem; /* pb-10 */
+.card-inner{
+  padding:1rem;
+  background:#fff;
+  border-radius:.75rem;
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 4px 6px rgba(0,0,0,.10);
+  min-height:120px;
+
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  will-change:transform;
 }
 
-.cards-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem 1rem; /* gap-y-8 gap-x-4 */
-    padding: 0;
-    margin: 0;
-    list-style: none;
+.card-title{
+  margin:0 0 .5rem 0;
+  font-weight:600;
+  font-size:1.1rem;
+  color:#111;
+  transition:transform .25s ease;
 }
 
-@media (min-width: 768px) {
-    .cards-grid {
-        grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
-    }
+.card-text{ margin:0; font-size:.95rem; color:#4a5568; }
+
+/* Same offsets you had */
+@media (min-width:768px){
+  .card-1{ margin-bottom:12rem; }
+  .card-2{ margin-top:11rem; }
+  .card-3{ margin-bottom:11rem; }
+  .card-4{ margin-top:8rem; }
 }
 
-.cards-grid .card {
-    position: relative;
-    transition: all 0.5s ease-out; /* For JS animation */
+/* Hover pop animation */
+@keyframes popBounce{
+  0%{ transform:translateY(0) scale(1); }
+  55%{ transform:translateY(-10px) scale(1.03); }
+  80%{ transform:translateY(-6px) scale(1.02); }
+  100%{ transform:translateY(-8px) scale(1.025); }
 }
 
-.cards-grid .card-inner {
-    padding: 1rem; /* p-4 */
-    background-color: #ffffff;
-    border-radius: 0.75rem; /* rounded-xl */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow */
-    color: #4a5568; /* text-text */
-    min-height: 100px;
+.card:hover .card-inner,
+.card:focus-within .card-inner{
+  animation: popBounce .35s cubic-bezier(.2,.8,.2,1) both;
+  box-shadow:0 22px 55px rgba(0,0,0,.16);
+  border-color:rgba(0,0,0,.12);
 }
 
-.cards-grid .card-title {
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+.card:hover .card-title{ transform:translateY(-1px); }
+
+@media (prefers-reduced-motion: reduce){
+  .card:hover .card-inner,
+  .card:focus-within .card-inner{
+    animation:none !important;
+    transform:translateY(-8px) scale(1.02);
+  }
 }
 
-.cards-grid .card-text {
-    font-size: 0.95rem;
-    margin-bottom: 0;
+/* Phone side */
+.phone-wrapper{
+  flex:1;
+  display:flex;
+  justify-content:flex-end;
+  align-items:flex-end;
+  width:100%;
+  order:-1;
 }
+@media (min-width:992px){ .phone-wrapper{ order:0; } }
 
-/* Card Specific Offsets (to match original layout) */
-@media (min-width: 768px) {
-    .cards-grid .card-2 {
-        margin-top: 4rem; /* md:mt-16 */
-    }
-    .cards-grid .card-3 {
-        margin-bottom: 8rem; /* md:mb-32 */
-    }
-    .cards-grid .card-4 {
-        margin-top: 8rem; /* md:mt-32 */
-    }
+.phone-mockup{
+  background:#333;
+  border:10px solid #222;
+  border-radius:40px;
+  box-shadow:0 20px 25px rgba(0,0,0,.25);
+  width:100%;
+  max-width:300px;
+  height:550px;
+  margin:0;
+  overflow:hidden;
+  position:relative;
+  z-index:10;
 }
-
-
-/* --- SVG Arrow Decorations --- */
-.arrow-svg {
-    position: absolute;
-    z-index: 10;
-    display: none; /* hidden on small screens */
+.phone-mockup::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100px;
+  height:15px;
+  background:#222;
+  border-radius:0 0 10px 10px;
+  z-index:20;
 }
-
-@media (min-width: 768px) {
-    .arrow-svg {
-        display: block;
-    }
+.phone-screen{
+  width:100%;
+  height:100%;
+  padding:20px 15px;
+  background:#faf3df;
+  overflow-y:auto;
 }
-
-.arrow-svg svg {
-    width: 100%;
-    height: 100%;
+.phone-header{
+  text-align:center;
+  font-size:1rem;
+  font-weight:700;
+  color:#4a5568;
+  margin-bottom:20px;
 }
-
-.arrow-svg path {
-    fill: black;
+.phone-card{
+  background:#fff;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:15px;
+  box-shadow:0 2px 4px rgba(0,0,0,.05);
 }
-
-/* SVG 1 positioning (between card 1 and 2) */
-.arrow-1 {
-    width: 50px;
-    height: 50px;
-    top: 1.5rem; /* top-6 */
-    right: -3rem; /* -right-12 */
+.phone-card-title{ font-weight:600; color:#1a202c; margin-bottom:5px; }
+.phone-card-amount{ font-size:1.5rem; font-weight:700; color:#007bff; margin-bottom:10px; }
+.phone-card-btn{
+  display:block;
+  width:100%;
+  padding:8px;
+  background:#007bff;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  text-align:center;
+  transition:background-color .2s ease;
 }
+.phone-card-btn:hover{ background:#0056b3; }
 
-/* SVG 2 positioning (below card 2) */
-.arrow-2 {
-    width: 69px;
-    height: 69px;
-    left: -4rem; /* -left-16 */
-    bottom: -1.75rem; /* -bottom-7 */
+/* Decorative circle */
+.float-circle{
+  position:absolute;
+  top:50px;
+  right:5%;
+  width:150px;
+  height:150px;
+  background:#e0e7ff;
+  border-radius:50%;
+  opacity:.5;
+  z-index:5;
+  pointer-events:none;
+  display:none;
 }
-
-/* SVG 3 positioning (below card 3) */
-.arrow-3 {
-    width: 41px;
-    height: 53px;
-    right: -1rem; /* -right-4 */
-    bottom: -3rem; /* -bottom-12 */
-}
-
-
-/* --- RIGHT SIDE: Phone Mockup --- */
-.phone-wrapper {
-    flex: 1; /* Takes less space on large screens */
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 100%;
-    /* On mobile, place it above the text/cards */
-    order: -1; 
-}
-
-@media (min-width: 992px) {
-    .phone-wrapper {
-        order: 0; /* Normal order on desktop */
-        padding-top: 0;
-    }
-}
-
-.phone-mockup {
-    background-color: #333;
-    border: 10px solid #222;
-    border-radius: 40px;
-    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.25);
-    width: 100%;
-    max-width: 300px; /* Typical phone width */
-    height: 550px; /* Typical phone height */
-    margin: 0;
-    overflow: hidden;
-    position: relative;
-    z-index: 10;
-}
-
-.phone-mockup::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 15px;
-    background-color: #222;
-    border-radius: 0 0 10px 10px;
-    z-index: 20;
-}
-
-.phone-screen {
-    width: 100%;
-    height: 100%;
-    padding: 20px 15px;
-    background-color: #faf3df; /* Background matching the section color */
-    overflow-y: auto;
-}
-
-.phone-header {
-    text-align: center;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #4a5568;
-    margin-bottom: 20px;
-}
-
-.phone-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.phone-card-title {
-    font-weight: 600;
-    color: #1a202c;
-    margin-bottom: 5px;
-}
-
-.phone-card-amount {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--bs-primary, #007bff);
-    margin-bottom: 10px;
-}
-
-.phone-card-btn {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    background-color: var(--bs-primary, #007bff);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.2s;
-}
-
-.phone-card-btn:hover {
-    background-color: #0056b3;
-}
-
-/* Floating Circle - decorative element */
-.float-circle {
-    position: absolute;
-    top: 50px;
-    right: 5%;
-    width: 150px;
-    height: 150px;
-    background-color: #e0e7ff; /* A lighter color for decoration */
-    border-radius: 50%;
-    opacity: 0.5;
-    z-index: 5;
-    pointer-events: none;
-    display: none;
-}
-
-@media (min-width: 992px) {
-    .float-circle {
-        display: block;
-    }
-}
+@media (min-width:992px){ .float-circle{ display:block; } }
