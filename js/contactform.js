@@ -1,4 +1,4 @@
-   const TO_EMAIL = "yourmail@domain.com"; // <-- receiver email
+   const TO_EMAIL = "mabdalaty@spark-sys.com"; // <-- receiver email
 
   const form = document.getElementById("cform");
   const alertBox = document.getElementById("cformAlert");

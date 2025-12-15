@@ -171,6 +171,49 @@
     </div>
 </section>
 
+
+<section class="cform-wrap">
+  <div class="cform-card">
+    <form id="cform" novalidate>
+      <div class="cform-row2">
+        <div class="cform-field">
+          <label class="cform-label" for="cname">Your Name</label>
+          <input class="cform-input" id="cname" type="text" placeholder="Your name" required />
+          <small class="cform-hint" data-hint="cname"></small>
+        </div>
+
+        <div class="cform-field">
+          <label class="cform-label" for="cemail">Your Email</label>
+          <input class="cform-input" id="cemail" type="email" placeholder="you@domain.com" required />
+          <small class="cform-hint" data-hint="cemail"></small>
+        </div>
+      </div>
+
+      <div class="cform-field">
+        <label class="cform-label" for="csubject">Subject</label>
+        <input class="cform-input" id="csubject" type="text" placeholder="Subject" required />
+        <small class="cform-hint" data-hint="csubject"></small>
+      </div>
+
+      <div class="cform-field">
+        <label class="cform-label" for="cmessage">Message</label>
+        <textarea class="cform-textarea" id="cmessage" rows="9" placeholder="Write your message..." required></textarea>
+        <small class="cform-hint" data-hint="cmessage"></small>
+      </div>
+
+      <div id="cformAlert" class="cform-alert" role="alert" aria-live="polite"></div>
+
+      <div class="cform-actions">
+        <button class="cform-btn" type="submit">Send Message</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+
+
 <!-- Footer -->
 <footer class="site-footer">
     <div class="footer-container">
