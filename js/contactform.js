@@ -1,20 +1,24 @@
-   const TO_EMAIL = "mabdalaty@spark-sys.com"; // <-- receiver email
+   // 🔴 Put your EmailJS values here
+  const EMAILJS_PUBLIC_KEY = "zRYLy3LfkMlWCmq8H";
+  const EMAILJS_SERVICE_ID = "service_skekz8r";
+  const EMAILJS_TEMPLATE_ID = "template_1m870mh";
+
+  emailjs.init(EMAILJS_PUBLIC_KEY);
 
   const form = document.getElementById("cform");
   const alertBox = document.getElementById("cformAlert");
+  const btn = form.querySelector(".cform-btn");
 
   function showAlert(kind, msg){
     alertBox.className = "cform-alert " + kind;
     alertBox.textContent = msg;
     alertBox.style.display = "block";
   }
-
   function clearAlert(){
     alertBox.style.display = "none";
     alertBox.textContent = "";
     alertBox.className = "cform-alert";
   }
-
   function setHint(id, msg){
     const el = document.querySelector(`.cform-hint[data-hint="${id}"]`);
     if (el) el.textContent = msg || "";
@@ -43,27 +47,29 @@
     return ok;
   }
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-     
-    const name = document.getElementById("cname").value.trim();
-    const email = document.getElementById("cemail").value.trim();
-    const subject = document.getElementById("csubject").value.trim();
-    const message = document.getElementById("cmessage").value.trim();
+    if (!validate()){
+       return;
+    }
 
-    const body =
-`Name: ${name}
-Email: ${email}
+    btn.disabled = true;
 
-${message}`;
+    try{
+      const params = {
+        from_name: document.getElementById("cname").value.trim(),
+        from_email: document.getElementById("cemail").value.trim(),
+        subject: document.getElementById("csubject").value.trim(),
+        message: document.getElementById("cmessage").value.trim(),
+      };
 
-    const mailto =
-      `mailto:${encodeURIComponent(TO_EMAIL)}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(body)}`;
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
 
-    // showAlert("is-info", "Opening your email app… click Send to deliver the message.");
-    window.location.href = mailto;
+      form.reset();
+     } catch (err) {
+     } finally {
+      btn.disabled = false;
+    }
   });
  
