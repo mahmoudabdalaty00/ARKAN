@@ -21,7 +21,7 @@
     <div class="container">
             <div class="logo-container">
                                 <a href="index.html" class="brand-wrap">
-                                    <span class="brand-text">AR<span>K</span>AN</span>
+                                    <!-- <span class="brand-text">AR<span>K</span>AN</span> -->
 
                                     <img
                                     src="images/products/image.png"
@@ -45,6 +45,9 @@
                           <a class="language-switcher" href="index.ar.html">AR</a>
                </li>
             </ul>
+        </div>
+        <div class="language-button">                 
+                          <a class="language-switcher" href="index.ar.html">AR</a>
         </div>
     </div>
 </nav>
@@ -524,5 +527,23 @@
 
 <script src="js/script.js"></script>
 <script src="js/howitworks.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.querySelector(".language-button .language-switcher");
+  if (!btn) return;
+
+  // Touch devices: toggle a class on first tap
+  btn.addEventListener("touchstart", () => {
+    btn.classList.add("is-pop");
+  }, { passive: true });
+
+  // Remove after a moment (so it feels like hover)
+  btn.addEventListener("touchend", () => {
+    setTimeout(() => btn.classList.remove("is-pop"), 500);
+  });
+});
+
+</script>
 </body>
 </html>
